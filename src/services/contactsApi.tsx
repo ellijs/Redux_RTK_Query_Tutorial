@@ -5,6 +5,7 @@ export const contactsApi = createApi({
     reducerPath: "contactsApi",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3006/" }),
     endpoints:(builder) => ({
+        // Since we don't pass any parameter, we pass down 'void'
         contacts: builder.query<Contact[], void>({
             query: () => '/contacts'
         }),
