@@ -21,6 +21,7 @@ function App() {
           })}
         </div>
       )}
+      <AddContact />
     </div>
   );
 }
@@ -29,6 +30,31 @@ export const ContactDetail = ({ id }:{id:string}) => {
   const { data } = useContactQuery(id);
   return (
     <pre>{ JSON.stringify(data, undefined, 2)}</pre>
+  )
+}
+
+// 
+export const AddContact = () => {
+  
+  const [ addContact ] = useAddContactMutation();
+  
+  // Retreive newData from data without refreshing manually
+  const { refetch } = useContactsQuery();
+  
+  const contact = { 
+    "id": "3",
+    "name" : "Jess",
+    "email": "jess@gmail.com"
+  }
+  const addHandler = async() => {
+    await addContact(contact)
+    // automatically refetches
+    refetch()
+  }
+  return ( 
+    <>
+      <button onClick={addHandler}>Add Contact </button>
+    </>
   )
 }
 
