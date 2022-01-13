@@ -13,11 +13,33 @@ export const contactsApi = createApi({
         }),
         contact: builder.query<Contact, string>({
             query: (id) => `/contacts/${id}`
-        })
+        }),
+        addContact: builder.mutation<void, Contact>({ 
+            query: contact => ({ 
+                url: '/contacts',
+                method: "POST",
+                body: contact
+            })
+        }),
+        updateContact: builder.mutation<void, Contact>({ 
+            query: ({ id, ...rest }) => ({ 
+                url: `/contacts/${id}`,
+                method: "PUT",
+                body: rest
+            })
+        }),
+        // we just need ID to pass for deletion
+        deleteContact: builder.mutation<void, string>({ 
+            query: (id ) => ({ 
+                url: `/contacts/${id}`,
+                method: "DELETE",
+            })
+        }),
     })
 })
 
-export const { useContactsQuery, useContactQuery } = contactsApi;
+export const { useContactsQuery, useContactQuery, useAddContactMutation, 
+              useUpdateContactMutation, useDeleteContactMutation } = contactsApi;
 
 //export const { use "Contacts" Query, useContactQuery } = contactsApi;
 // Matches the name with endpoints
