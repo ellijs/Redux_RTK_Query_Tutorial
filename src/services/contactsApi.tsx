@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Contact } from '../models/contact.model';
 
 export const contactsApi = createApi({
+    // hooks for the reducer path
     reducerPath: "contactsApi",
+    
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3006/" }),
     endpoints:(builder) => ({
         // Since we don't pass any parameter, we pass down 'void'
