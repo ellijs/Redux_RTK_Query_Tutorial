@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import { store } from './store';
 import { Provider } from 'react-redux';
+
+// import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
+// If we use this, we don't need to use store anymore
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
