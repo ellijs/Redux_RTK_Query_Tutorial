@@ -16,3 +16,6 @@ export const contactsApi = createApi({
 })
 
 export const { useContactsQuery, useContactQuery } = contactsApi;
+
+//export const { use "Contacts" Query, useContactQuery } = contactsApi;
+// Matches the name with endpoints
